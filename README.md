@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Trade Message Processor
 ===============
 
@@ -39,3 +40,6 @@ can arrive through the same channel, and if it is type "R" (rate) it finds the c
  - Extra security in the endpoint via OAuth or similar.
  - Management of the connections and the queues to allow singe communication with the client if needed instead of broadcasting.
 
+=======
+# trade-market-processor
+>>>>>>> b6a42e36b0cbca0413fcd3b00d9ae8de192dc952
