@@ -29,7 +29,7 @@ can arrive through the same channel, and if it is type "R" (rate) it finds the c
  The system has a basic test coverage mostly for demonstration. The unit testing is not far from complete but of course Acceptance, stress and resilience testing should be implemented.
  There are some TODOs in the code that explain what is missing.
 
-![Alt text](http://MarketTradeProcessor.jpg "High Level Architecture")
+![Alt text](https://github.com/kberos/trade-market-processor/blob/master/MarketTradeProcessor.jpg?raw=true "High Level Architecture")
  Bellow are the points that need improvement
  - Unit Test code coverage.
  - System, resilience, stress accepts tests.
