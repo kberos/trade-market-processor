@@ -31,6 +31,7 @@ can arrive through the same channel, and if it is type "R" (rate) it finds the c
  The system has a basic test coverage mostly for demonstration. The unit testing is not far from complete but of course Acceptance, stress and resilience testing should be implemented.
  There are some TODOs in the code that explain what is missing.
 
+![Alt text](http://MarketTradeProcessor.jpg "High Level Architecture")
  Bellow are the points that need improvement
  - Unit Test code coverage.
  - System, resilience, stress accepts tests.
@@ -39,6 +40,6 @@ can arrive through the same channel, and if it is type "R" (rate) it finds the c
  - Extra security in the endpoint via OAuth or similar.
  - Management of the connections and the queues to allow singe communication with the client if needed instead of broadcasting.
 
+
 =======
 # trade-market-processor
->>>>>>> b6a42e36b0cbca0413fcd3b00d9ae8de192dc952
