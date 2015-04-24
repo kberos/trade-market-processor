@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Trade Message Processor
 ===============
 
