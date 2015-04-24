@@ -1,8 +1,6 @@
 Trade Message Processor
 ===============
 
-An exercise test for Currencyfair hiring.
-
 This application is a sample of how a Market trade messaging processor could be. It is not as sophisticated and production ready as the real one would be,
 but close. It mostly demonstrates the architecture, the aproach of solving the problem, the scalability considerations, and part of the testing methodology.
 
