@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xmlns:aop="http://www.springframework.org/schema/aop"
+           xmlns:task="http://www.springframework.org/schema/task"
+           xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+        <bean id="nativeConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+            <property name="connectionTimeout" value="100000" /> <!-- in milliseconds -->
+            <property name="requestedHeartbeat" value="2"/> <!-- in seconds -->
+        </bean>
+
+        <rabbit:connection-factory id="connectionFactory"
+                                   host="127.0.0.1" username="guest" password="guest" virtual-host="/" port="5672" connection-factory="nativeConnectionFactory"/>
+
+        <rabbit:admin connection-factory="connectionFactory" />
+
+        <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"  exchange="tradeExchange"/>
+
+
+        <rabbit:direct-exchange name="tradeExchange">
+            <rabbit:bindings>
+                <rabbit:binding queue="processorQueue"></rabbit:binding>
+            </rabbit:bindings>
+        </rabbit:direct-exchange>
+        <rabbit:queue name="processorQueue" />
+
+
+        <rabbit:listener-container
+                connection-factory="connectionFactory">
+            <rabbit:listener ref="tradeMessageListener" queue-names="processorQueue" />
+        </rabbit:listener-container>
+
+
+        <bean id="tradeMessageListener" class="com.currencyfair.messageprocessor.listener.TradeMessageListener" />
+
+        <!-- glue the listener and myAnonymousQueue  to the container-->
+        <rabbit:listener-container id="myListenerContainer"
+                                   connection-factory="connectionFactory">
+            <rabbit:listener ref="tradeMessageListener" queues="processorQueue" />
+        </rabbit:listener-container>
+
+
+    </beans>
+
+</beans>
