@@ -55,8 +55,11 @@ http://ec2-52-11-226-200.us-west-2.compute.amazonaws.com:8080/currencyfair/index
 
 1) Open the analytics page to allow the client to open the web socket connection
 2) Send calls to the Rest API like:
+
 { "userId":"12345", "currencyFrom": "EUR", "currencyTo": "USD", "amountSell": 10340, "amountBuy": 847.10, "rate": 0.7471, "timePlaced" : "01-JAN-2000 13:10:10", "originatingCountry" : "US"}
+
 { "userId":"12345", "currencyFrom": "EUR", "currencyTo": "GBP", "amountSell": 10340, "amountBuy": 2000, "rate": 0.9433, "timePlaced" : "01-JAN-2000 13:10:10", "originatingCountry" : "GB"}
+
 { "userId":"12345", "currencyFrom": "EUR", "currencyTo": "JPY", "amountSell": 10340, "amountBuy": 3000, "rate": 13, "timePlaced" : "01-JAN-2000 13:10:10", "originatingCountry" : "FR"}
 
 Send a series of them and watch in real time as the messages arrive to the server to rate diagram to change.
