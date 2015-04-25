@@ -3,7 +3,7 @@ package com.currencyfair.messageprocessor.model.api;
 import com.currencyfair.messageprocessor.MessageDateDeserializer;
 import com.currencyfair.messageprocessor.model.CountryEnum;
 import com.currencyfair.messageprocessor.model.CurrencyEnum;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;

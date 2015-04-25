@@ -54,7 +54,7 @@ public class TradeMessageDaoImplTest extends TestCase {
     @Rule
     public MongoDbRule mongoDbRule = newMongoDbRule().defaultManagedMongoDb("processor");
 
-//    @UsingDataSet(locations="initialData.json", loadStrategy= LoadStrategyEnum.CLEAN_INSERT)
+    //    @UsingDataSet(locations="initialData.json", loadStrategy= LoadStrategyEnum.CLEAN_INSERT)
     //@ShouldMatchDataSet(location="expectedData.json")
     @Test
     public void testStoreMessage() throws Exception {
@@ -69,14 +69,14 @@ public class TradeMessageDaoImplTest extends TestCase {
         tradeMessageDao.storeMessage(tradeMessage);
         List<TradeMessage> tradeMessageList = tradeMessageDao.getAllMessages();
         assertEquals(1, tradeMessageList.size());
-        assertEquals(tradeMessage,tradeMessageList.get(0));
+        assertEquals(tradeMessage, tradeMessageList.get(0));
     }
 
     @Test
-   @UsingDataSet(loadStrategy= LoadStrategyEnum.DELETE_ALL)
+    @UsingDataSet(loadStrategy = LoadStrategyEnum.DELETE_ALL)
     public void testGetAllMessages() throws Exception {
         List<TradeMessage> tradeMessageList = tradeMessageDao.getAllMessages();
-        assertEquals(0,tradeMessageList.size());
+        assertEquals(0, tradeMessageList.size());
 
         TradeMessage tradeMessage = new TradeMessage();
         tradeMessage.setAmountBuy(1111.0);
@@ -98,15 +98,15 @@ public class TradeMessageDaoImplTest extends TestCase {
         tradeMessageDao.storeMessage(tradeMessage);
         tradeMessageDao.storeMessage(tradeMessage2);
         tradeMessageList = tradeMessageDao.getAllMessages();
-        assertEquals(2,tradeMessageList.size());
+        assertEquals(2, tradeMessageList.size());
 
     }
 
     @Test
-    @UsingDataSet(loadStrategy= LoadStrategyEnum.DELETE_ALL)
+    @UsingDataSet(loadStrategy = LoadStrategyEnum.DELETE_ALL)
     public void testGetVolumes() throws Exception {
-       List<AnalyticsVolumeMessage> volumeMessageList =  tradeMessageDao.getVolumes();
-        assertEquals(0,volumeMessageList.size());
+        List<AnalyticsVolumeMessage> volumeMessageList = tradeMessageDao.getVolumes();
+        assertEquals(0, volumeMessageList.size());
 
         TradeMessage tradeMessage = new TradeMessage();
         tradeMessage.setAmountBuy(100.0);
@@ -139,13 +139,12 @@ public class TradeMessageDaoImplTest extends TestCase {
         tradeMessageDao.storeMessage(tradeMessage3);
 
 
-        volumeMessageList =  tradeMessageDao.getVolumes();
-        assertEquals(2,volumeMessageList.size());
-        assertEquals(CurrencyEnum.USD.name(),volumeMessageList.get(0).getId());
-        assertEquals(200.0,volumeMessageList.get(0).getVolume());
-        assertEquals(CurrencyEnum.GBP.name(),volumeMessageList.get(1).getId());
-        assertEquals(400.0,volumeMessageList.get(1).getVolume());
-
+        volumeMessageList = tradeMessageDao.getVolumes();
+        assertEquals(2, volumeMessageList.size());
+        assertEquals(CurrencyEnum.USD.name(), volumeMessageList.get(0).getId());
+        assertEquals(200.0, volumeMessageList.get(0).getVolume());
+        assertEquals(CurrencyEnum.GBP.name(), volumeMessageList.get(1).getId());
+        assertEquals(400.0, volumeMessageList.get(1).getVolume());
 
 
     }

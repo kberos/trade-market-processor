@@ -40,7 +40,7 @@ public class TradeMessageProcessor implements ProcessorService {
             throw new IllegalStateException();
         }
 
-        rabbitTemplate.convertAndSend("processorQueue",messageJson);
+        rabbitTemplate.convertAndSend("processorQueue", messageJson);
         LOGGER.info("TradeMessage:" + tradeMessage + " was added to queue");
 
     }

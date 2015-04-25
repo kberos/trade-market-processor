@@ -32,7 +32,7 @@ public class AnalyticsVolumeProcessor implements
     @Scheduled(fixedDelay = 1000)//Should be configurable in properties
     public void sendDataUpdates() {
         List<AnalyticsVolumeMessage> volumes = tradeMessageDao.getVolumes();
-        LOGGER.info("VolumesList:" + volumes);
+        LOGGER.debug("VolumesList:" + volumes);
         AnalyticsVolumeMessageWrapper analyticsVolumeMessageWrapper = new AnalyticsVolumeMessageWrapper();
         analyticsVolumeMessageWrapper.setVolumes(volumes);
         webSocketClient.sendVolumeDataToClient(analyticsVolumeMessageWrapper);

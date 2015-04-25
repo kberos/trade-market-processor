@@ -11,12 +11,12 @@
         http://www.springframework.org/schema/data/mongo
         http://www.springframework.org/schema/data/mongo/spring-mongo.xsdd">
 
-        <mongo:mongo host="localhost" port="27017" id="mongo" />
-        <mongo:db-factory dbname="processor" mongo-ref="mongo" id="mongoDbFactory" />
+        <mongo:mongo host="localhost" port="27017" id="mongo"/>
+        <mongo:db-factory dbname="processor" mongo-ref="mongo" id="mongoDbFactory"/>
 
         <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-            <constructor-arg name="mongo" ref="mongo" />
-            <constructor-arg name="databaseName" value="processor" />
+            <constructor-arg name="mongo" ref="mongo"/>
+            <constructor-arg name="databaseName" value="processor"/>
         </bean>
 
         <bean id="tradeMessageDao" class="com.currencyfair.messageprocessor.storage.dao.TradeMessageDaoImpl">

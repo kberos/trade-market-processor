@@ -203,7 +203,8 @@ rateClient.connect('kosmas', 'beros', function (frame) {
             var pointEURUSD =  parseFloat(messageJson.volumes[0].volume) ;
             var pointEURGB =   parseFloat(messageJson.volumes[2].volume) ;
             var pointEURJPY =  parseFloat(messageJson.volumes[1].volume) ;
-       }
+            volumeAll.setData([pointEURUSD, pointEURGB, pointEURJPY]);
+        }
 
     });
 
